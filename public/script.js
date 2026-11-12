@@ -144,7 +144,11 @@ const commands = {
   defense: go('#defense'),
   arsenal: go('#arsenal'),
   parcours: go('#parcours'),
-  contact: () => ['GitHub : https://github.com/PaulEnBon'],
+  contact: () => [
+    'Mail     : contact@paulbl.com',
+    'LinkedIn : https://www.linkedin.com/in/paul-bourdareau-launay-335a013a3/',
+    'GitHub   : https://github.com/PaulEnBon',
+  ],
   sudo: () => ['visiteur n\'est pas dans le fichier sudoers. Cet incident sera signalé.'],
   'cat flag.txt': () => ['PBL{l3_m01ndr3_pr1v1l3g3}'],
 };
