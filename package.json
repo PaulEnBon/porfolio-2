@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-cyber",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio cybersécurité de Paul Bourdareau Launay",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}

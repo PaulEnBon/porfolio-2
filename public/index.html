@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paul Bourdareau Launay — Cybersécurité &amp; développement</title>
+  <meta name="description" content="Portfolio de Paul Bourdareau Launay, étudiant en Bachelor 2 Informatique à Ynov, orienté cybersécurité : durcissement réseau, sécurité applicative, bases de données.">
+  <meta name="theme-color" content="#05080a">
+  <meta property="og:title" content="Paul Bourdareau Launay — Cybersécurité & développement">
+  <meta property="og:description" content="Durcissement réseau, sécurité applicative, moindre privilège. Projets et code.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div id="progress" aria-hidden="true"></div>
+  <a class="skip" href="#whoami">Aller au contenu</a>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#accueil" aria-label="Accueil">PBL<span class="blink">_</span></a>
+      <nav aria-label="Navigation principale">
+        <a href="#whoami">whoami</a>
+        <a href="#defense">défense</a>
+        <a href="#projets">dossiers</a>
+        <a href="#arsenal">arsenal</a>
+        <a href="#parcours">parcours</a>
+        <a href="#contact">contact</a>
+      </nav>
+      <span class="hud" aria-hidden="true"><i class="dot"></i>EN LIGNE <span id="clock">--:--:--</span></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="accueil" class="hero wrap">
+      <div class="hero-txt">
+        <p class="kicker"><span class="prompt-c">visiteur@pbl:~$</span> whoami</p>
+        <h1 aria-label="Paul Bourdareau Launay">
+          <span class="glitch" data-text="Paul" aria-hidden="true">Paul</span>
+          <span class="glitch" data-text="Bourdareau" aria-hidden="true">Bourdareau</span>
+          <span class="glitch" data-text="Launay" aria-hidden="true">Launay</span>
+        </h1>
+        <p class="role"><span class="prompt-c">$</span> <span id="typed">Étudiant B2 Informatique · orienté cybersécurité</span><span class="blink">█</span></p>
+        <p class="lead">Je construis des applications et des réseaux en partant de la question&nbsp;: <strong>qui a le droit de faire quoi&nbsp;?</strong> Pare-feu en liste blanche, moindre privilège en base, authentification vérifiée côté serveur.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projets">Ouvrir les dossiers</a>
+          <a class="btn" href="https://github.com/PaulEnBon" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+        <dl class="stats">
+          <div><dt>repos publics</dt><dd>26</dd></div>
+          <div><dt>langages</dt><dd>7</dd></div>
+          <div><dt>apps en ligne</dt><dd>3</dd></div>
+        </dl>
+      </div>
+
+      <div class="term" id="terminal">
+        <div class="term-bar"><i></i><i></i><i></i><span>visiteur@pbl: ~</span></div>
+        <div class="term-body">
+          <div id="term-out" role="log" aria-live="polite">
+            <p>Shell interactif. Tapez <b>help</b> puis Entrée.</p>
+          </div>
+          <form id="term-form">
+            <label for="term-in" class="prompt-c">visiteur@pbl:~$</label>
+            <input id="term-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="60" aria-label="Commande du terminal">
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="whoami" class="wrap sec">
+      <h2><span class="idx">01</span><span class="scramble">whoami</span></h2>
+      <div class="two">
+        <div class="reveal">
+          <p>Étudiant en <strong>Bachelor 2 Informatique à Ynov Campus Paris Ouest</strong>, après un bac STI2D ITEC. Je code en Go, Python et TypeScript, et je m'oriente vers la <strong>cybersécurité</strong>.</p>
+          <p>Ce qui m'intéresse&nbsp;: comprendre comment un système tombe pour mieux le fermer. Écrire un pare-feu à partir d'une matrice des flux, retirer à un compte SQL tout ce dont il n'a pas besoin, refuser un jeton dont la signature n'a pas été vérifiée.</p>
+          <p>En dehors du terminal&nbsp;: conception 3D, photo, sport, jeux vidéo.</p>
+        </div>
+        <pre class="idcard reveal" aria-label="Fiche d'identité"><code><span class="k">nom</span>        Paul Bourdareau Launay
+<span class="k">rôle</span>       étudiant B2 informatique
+<span class="k">école</span>      Ynov Campus Paris Ouest
+<span class="k">cap</span>        cybersécurité
+<span class="k">langues</span>    français (natif), anglais (avancé)
+<span class="k">shell</span>      go · python · typescript · sql
+<span class="k">statut</span>     <span class="ok">ouvert aux stages / alternances</span></code></pre>
+      </div>
+    </section>
+
+    <section id="defense" class="wrap sec">
+      <h2><span class="idx">02</span><span class="scramble">défense en profondeur</span></h2>
+      <p class="sub">Chaque couche, une mesure que j'ai réellement mise en place, et le projet qui le prouve.</p>
+      <ol class="layers">
+        <li class="reveal"><span class="lv">L1</span><h3>Réseau</h3><p>Pare-feu nftables en liste blanche (<code>policy drop</code>), zones WAN / LAN / DMZ, suivi d'état, DNAT, journalisation des rejets.</p><span class="proof">Calypso</span></li>
+        <li class="reveal"><span class="lv">L2</span><h3>Système</h3><p>SSH par clé uniquement, mots de passe désactivés, connexion root interdite.</p><span class="proof">Calypso</span></li>
+        <li class="reveal"><span class="lv">L3</span><h3>Authentification</h3><p>Mots de passe en bcrypt, comparaison à temps constant, JWT signés et expirants, jetons OAuth vérifiés par signature Ed25519 (JWKS).</p><span class="proof">Crypto Arena · api-jeux</span></li>
+        <li class="reveal"><span class="lv">L4</span><h3>Entrées</h3><p>Validation côté serveur (Pydantic, Zod), requêtes paramétrées, aucune valeur sensible acceptée du client.</p><span class="proof">Crypto Arena · Traque</span></li>
+        <li class="reveal"><span class="lv">L5</span><h3>Données</h3><p>Row Level Security, rôles métiers <code>NOLOGIN</code>, <code>GRANT</code> à la colonne près, vues par profil&nbsp;: le moindre privilège.</p><span class="proof">Traque · Bibliothèque mangas</span></li>
+        <li class="reveal"><span class="lv">L6</span><h3>Secrets &amp; configuration</h3><p>Secrets hors dépôt, CORS restreint aux origines connues, CSP stricte et en-têtes de sécurité.</p><span class="proof">Crypto Arena · ce site</span></li>
+      </ol>
+    </section>
+
+    <section id="projets" class="wrap sec">
+      <h2><span class="idx">03</span><span class="scramble">dossiers sécurité</span></h2>
+      <p class="sub">Cinq projets où la sécurité est dans le code, pas dans la description.</p>
+      <div class="cards">
+
+        <article class="card reveal">
+          <header><span class="ref">DOSSIER 01</span><span class="chip net">RÉSEAU</span><span class="chip sec">DURCISSEMENT</span></header>
+          <h3>Calypso — lab réseau durci</h3>
+          <p>Passerelle Linux à trois zones (WAN, LAN, DMZ) protégeant un serveur interne et un intranet web. TP Réseaux B2.</p>
+          <ul class="mes">
+            <li>nftables en liste blanche&nbsp;: <code>policy drop</code> sur <code>input</code> et <code>forward</code></li>
+            <li>Règles dérivées d'une matrice des flux, une ligne = une règle</li>
+            <li>Suivi d'état conntrack, paquets invalides rejetés, ping limité à 5/s</li>
+            <li>DNAT pour publier le web en DMZ, masquerade en sortie</li>
+            <li>SSH&nbsp;: clé uniquement, root interdit</li>
+          </ul>
+          <footer><span class="tags">nftables · OpenSSH · NAT · Linux</span><span class="lnk off">lab local</span></footer>
+        </article>
+
+        <article class="card reveal">
+          <header><span class="ref">DOSSIER 02</span><span class="chip app">APPSEC</span><span class="chip sec">AUTH</span></header>
+          <h3>Crypto Arena</h3>
+          <p>Simulateur de trading crypto à argent virtuel, prix réels, classement entre joueurs. React, FastAPI, PostgreSQL.</p>
+          <ul class="mes">
+            <li>bcrypt, comparaison à temps constant, aucun indice sur l'existence d'un e-mail</li>
+            <li>JWT HS256 expirant, vérifié sur chaque route privée</li>
+            <li>Connexion Google / GitHub&nbsp;: signature Ed25519 vérifiée via JWKS, émetteur, audience, expiration</li>
+            <li>Le prix n'est jamais accepté du client&nbsp;; transactions avec verrous ligne</li>
+            <li>CORS restreint, requêtes paramétrées, secrets hors dépôt</li>
+          </ul>
+          <footer><span class="tags">FastAPI · PyJWT · bcrypt · React · Docker</span>
+            <span class="lnk"><a href="https://github.com/PaulEnBon/Crypto-Arena" target="_blank" rel="noopener noreferrer">code ↗</a><a href="https://crypto-arena-three.vercel.app" target="_blank" rel="noopener noreferrer">démo ↗</a></span></footer>
+        </article>
+
+        <article class="card reveal">
+          <header><span class="ref">DOSSIER 03</span><span class="chip app">APPSEC</span><span class="chip data">DONNÉES</span></header>
+          <h3>Traque — manhunt géolocalisé</h3>
+          <p>Jeu de poursuite entre amis avec positions en temps réel sur carte. Next.js 15, Supabase, MapLibre.</p>
+          <ul class="mes">
+            <li>Row Level Security Postgres&nbsp;: le navigateur n'a que la clé <code>anon</code></li>
+            <li>Vue filtrée par rôle&nbsp;: un chasseur ne lit pas ce qu'un chassé voit</li>
+            <li>Toutes les entrées validées côté serveur avec Zod</li>
+            <li>RLS testée en SQL avec 6 comptes simulés, dont un extérieur à la partie</li>
+            <li>14 scénarios multi-comptes automatisés</li>
+          </ul>
+          <footer><span class="tags">Next.js · Supabase · RLS · Zod · Vitest</span>
+            <span class="lnk"><a href="https://manhint.vercel.app" target="_blank" rel="noopener noreferrer">démo ↗</a></span></footer>
+        </article>
+
+        <article class="card reveal">
+          <header><span class="ref">DOSSIER 04</span><span class="chip data">DONNÉES</span><span class="chip sec">MOINDRE PRIVILÈGE</span></header>
+          <h3>Bibliothèque de mangas</h3>
+          <p>Base PostgreSQL de prêt de mangas, 200&nbsp;005 emprunts. Projet SQL avancé B2, en groupe.</p>
+          <ul class="mes">
+            <li>Rôles métiers <code>NOLOGIN</code>, un compte par personne qui en hérite</li>
+            <li><code>UPDATE</code> accordé sur une seule colonne, e-mails des lecteurs illisibles au comptoir</li>
+            <li>Vues par profil&nbsp;: le gérant lit des statistiques, rien d'autre</li>
+            <li>Trigger qui fait respecter la règle métier dans la base elle-même</li>
+            <li>Index sur clé étrangère&nbsp;: requête environ 40 fois plus rapide</li>
+          </ul>
+          <footer><span class="tags">PostgreSQL · PL/pgSQL · GRANT · Docker</span>
+            <span class="lnk"><a href="https://github.com/PaulEnBon/sql-bibliotheque-mangas" target="_blank" rel="noopener noreferrer">code ↗</a></span></footer>
+        </article>
+
+        <article class="card reveal">
+          <header><span class="ref">DOSSIER 05</span><span class="chip app">APPSEC</span><span class="chip sec">API</span></header>
+          <h3>api-jeux</h3>
+          <p>API REST d'un catalogue de jeux. FastAPI, SQLAlchemy, Pydantic, PostgreSQL.</p>
+          <ul class="mes">
+            <li>Module <code>securite.py</code>&nbsp;: hachage bcrypt appelé directement, passlib étant incompatible avec Python 3.13</li>
+            <li>Vérification à temps constant, même pour un compte inexistant</li>
+            <li>Jetons JWT signés, clé secrète en variable d'environnement</li>
+            <li>Import CSV qui rejette les lignes invalides</li>
+            <li>Conteneurisé (API + PostgreSQL), <code>ruff</code> et <code>pytest</code></li>
+          </ul>
+          <footer><span class="tags">FastAPI · bcrypt · JWT · Docker · pytest</span>
+            <span class="lnk"><a href="https://github.com/PaulEnBon/Api-1-10-26" target="_blank" rel="noopener noreferrer">code ↗</a></span></footer>
+        </article>
+
+      </div>
+
+      <h2 class="h-sm"><span class="idx">04</span><span class="scramble">autres builds</span></h2>
+      <ul class="builds">
+        <li class="reveal"><a href="https://github.com/PaulEnBon/groupie-trackerg18" target="_blank" rel="noopener noreferrer"><b>Groupie Tracker</b><span>Application de bureau&nbsp;: recherche, filtres et géolocalisation de concerts depuis une API.</span><em>Go · Fyne</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/game_jam" target="_blank" rel="noopener noreferrer"><b>Betrayal Box</b><span>FPS de survie à double rendu, raycaster 2D et voxels 3D, écrit pour une game jam.</span><em>JavaScript</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/ESPERSOUL2" target="_blank" rel="noopener noreferrer"><b>Esper Soul 2</b><span>RPG textuel jouable dans le terminal&nbsp;: exploration, combat, artisanat.</span><em>Go</em></a></li>
+        <li class="reveal"><a href="https://betmcdo.vercel.app" target="_blank" rel="noopener noreferrer"><b>NuggetBet</b><span>Paris privés entre amis en monnaie virtuelle, pensé pour le mobile.</span><em>Next.js · TypeScript</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/CessBot" target="_blank" rel="noopener noreferrer"><b>SuccessBot</b><span>Assistant IA visuel en temps réel, avec interface et installeur Windows.</span><em>Python</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/puissance2x2" target="_blank" rel="noopener noreferrer"><b>Puissance 2x2</b><span>Jeu de réflexion et variante Puissance 4.</span><em>Go</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/jeux2dame" target="_blank" rel="noopener noreferrer"><b>Jeu de dames</b><span>Jeu de dames en programmation orientée objet.</span><em>Java</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/Yboost" target="_blank" rel="noopener noreferrer"><b>Yboost</b><span>API REST de Pokémons.</span><em>Node.js · Express</em></a></li>
+      </ul>
+    </section>
+
+    <section id="arsenal" class="wrap sec">
+      <h2><span class="idx">05</span><span class="scramble">arsenal</span></h2>
+      <div class="arsenal">
+        <div class="reveal"><h3>Réseau &amp; système</h3><ul><li>nftables</li><li>OpenSSH</li><li>NAT / DMZ</li><li>Matrice des flux</li><li>Linux</li><li>Docker</li></ul></div>
+        <div class="reveal"><h3>Sécurité applicative</h3><ul><li>JWT</li><li>bcrypt</li><li>OAuth / JWKS</li><li>CORS</li><li>CSP</li><li>Validation serveur</li></ul></div>
+        <div class="reveal"><h3>Données</h3><ul><li>PostgreSQL</li><li>Row Level Security</li><li>Rôles &amp; GRANT</li><li>Triggers</li><li>Index</li><li>Supabase</li></ul></div>
+        <div class="reveal"><h3>Développement</h3><ul><li>Python / FastAPI</li><li>Go</li><li>TypeScript / Next.js</li><li>React</li><li>Java</li><li>PHP</li></ul></div>
+        <div class="reveal"><h3>Qualité</h3><ul><li>Git / GitHub</li><li>pytest</li><li>Vitest</li><li>ruff</li><li>Tests multi-comptes</li></ul></div>
+      </div>
+    </section>
+
+    <section id="parcours" class="wrap sec">
+      <h2><span class="idx">06</span><span class="scramble">parcours</span></h2>
+      <ol class="time">
+        <li class="reveal"><time>2026 — 2027</time><h3>Bachelor 2 Informatique</h3><p>Ynov Campus Paris Ouest. Réseaux, SQL avancé, backend Python, sécurité.</p></li>
+        <li class="reveal"><time>2025 — 2026</time><h3>Bachelor 1 Informatique</h3><p>Ynov. Go, Java, Git, premiers projets en équipe.</p></li>
+        <li class="reveal"><time>2022 — 2025</time><h3>Baccalauréat STI2D, spécialité ITEC</h3><p>Ingénierie, prototypage, conception 3D. Projet d'oral&nbsp;: support de niveau laser 360°.</p></li>
+      </ol>
+    </section>
+
+    <section id="contact" class="wrap sec">
+      <h2><span class="idx">07</span><span class="scramble">contact</span></h2>
+      <div class="contact reveal">
+        <p class="cmd"><span class="prompt-c">$</span> ssh paul@github.com</p>
+        <p>Un stage, une alternance, un projet&nbsp;? Le plus simple est de passer par GitHub.</p>
+        <a class="btn primary" href="https://github.com/PaulEnBon" target="_blank" rel="noopener noreferrer">github.com/PaulEnBon ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <p>© 2026 Paul Bourdareau Launay</p>
+    <p>Servi par Node sans dépendance · CSP stricte · aucun traceur</p>
+  </footer>
+</body>
+</html>

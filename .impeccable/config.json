@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/index.html"
+        ],
+        "createdAt": "2026-11-12T16:39:44.443Z",
+        "reason": "agent decided: user asked for a cyber theme with effects; phosphor glow is the domain look, not confirmed by user"
+      }
+    ]
+  }
+}
