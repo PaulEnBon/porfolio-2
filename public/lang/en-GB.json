@@ -1,0 +1,32 @@
+{
+  "nav.defense": "defence",
+  "h.defense": "defence in depth",
+  "about.1": "<strong>Second-year Computer Science Bachelor's student at Ynov Campus Paris Ouest</strong>, after a French technology baccalauréat (STI2D ITEC). I code in Go, Python and TypeScript, and I'm heading towards <strong>cybersecurity</strong>.",
+  "about.3": "Away from the terminal: 3D design, photography, sport, video games.",
+  "idcard": "<span class=\"k\">name</span>       Paul Bourdareau Launay\n<span class=\"k\">role</span>       2nd-year CS student\n<span class=\"k\">school</span>     Ynov Campus Paris Ouest\n<span class=\"k\">focus</span>      cybersecurity\n<span class=\"k\">languages</span>  French (native), English (advanced)\n<span class=\"k\">shell</span>      go · python · typescript · sql\n<span class=\"k\">status</span>     <span class=\"ok\">open to placements / apprenticeships</span>",
+  "l4.p": "Server-side validation (Pydantic, Zod), parameterised queries, no sensitive value accepted from the client.",
+  "c2.5": "Restricted CORS, parameterised queries, secrets kept out of the repo",
+  "c5.p": "REST API for a game catalogue. FastAPI, SQLAlchemy, Pydantic, PostgreSQL.",
+  "c5.5": "Containerised (API + PostgreSQL), <code>ruff</code> and <code>pytest</code>",
+  "b7.t": "Draughts",
+  "b7": "Draughts game built with object-oriented programming.",
+  "t3.t": "Baccalauréat STI2D, ITEC specialism",
+  "contact.p": "A placement, an apprenticeship, a project? Get in touch.",
+  "boot": [
+    "[  OK  ] Initialising kernel",
+    "[  OK  ] Loading modules: nftables sshd jwt rls",
+    "[  OK  ] Default policy: DROP",
+    "[  OK  ] Encrypted session established",
+    "> ACCESS GRANTED"
+  ],
+  "help": [
+    "whoami     who I am",
+    "projects   list of files",
+    "defence    the six layers",
+    "skills     tools and know-how",
+    "education  background",
+    "contact    reach me",
+    "clear      clear the screen"
+  ],
+  "ls": "whoami  defence/  projects/  skills/  education/  contact  flag.txt"
+}

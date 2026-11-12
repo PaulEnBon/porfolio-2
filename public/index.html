@@ -11,60 +11,71 @@
   <meta property="og:type" content="website">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script src="script.js" type="module"></script>
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
   <div class="scanlines" aria-hidden="true"></div>
   <div id="progress" aria-hidden="true"></div>
-  <a class="skip" href="#whoami">Aller au contenu</a>
+  <a class="skip" href="#whoami" data-i18n="skip">Aller au contenu</a>
 
   <header class="nav">
     <div class="wrap nav-in">
-      <a class="brand" href="#accueil" aria-label="Accueil">PBL<span class="blink">_</span></a>
-      <nav aria-label="Navigation principale">
+      <a class="brand" href="#accueil" aria-label="Accueil" data-i18n-aria="aria.home">PBL<span class="blink">_</span></a>
+      <nav aria-label="Navigation principale" data-i18n-aria="aria.nav">
         <a href="#whoami">whoami</a>
-        <a href="#defense">défense</a>
-        <a href="#projets">dossiers</a>
-        <a href="#arsenal">arsenal</a>
-        <a href="#parcours">parcours</a>
-        <a href="#contact">contact</a>
+        <a href="#defense" data-i18n="nav.defense">défense</a>
+        <a href="#projets" data-i18n="nav.files">dossiers</a>
+        <a href="#competences" data-i18n="nav.skills">compétences</a>
+        <a href="#parcours" data-i18n="nav.path">parcours</a>
+        <a href="#contact" data-i18n="nav.contact">contact</a>
       </nav>
-      <span class="hud" aria-hidden="true"><i class="dot"></i>EN LIGNE <span id="clock">--:--:--</span></span>
+      <span class="hud" aria-hidden="true"><i class="dot"></i><span data-i18n="online">EN LIGNE</span> <span id="clock">--:--:--</span></span>
+      <select id="lang" class="lang" aria-label="Langue" data-i18n-aria="aria.lang">
+        <option value="fr">Français</option>
+        <option value="en-US">English (US)</option>
+        <option value="en-GB">English (UK)</option>
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="zh">简体中文</option>
+        <option value="ja">日本語</option>
+      </select>
     </div>
   </header>
 
   <main>
     <section id="accueil" class="hero wrap">
       <div class="hero-txt">
-        <p class="kicker"><span class="prompt-c">visiteur@pbl:~$</span> whoami</p>
+        <p class="kicker"><span class="prompt-c" data-i18n="prompt">visiteur@pbl:~$</span> whoami</p>
         <h1 aria-label="Paul Bourdareau Launay">
           <span class="glitch" data-text="Paul" aria-hidden="true">Paul</span>
           <span class="glitch" data-text="Bourdareau" aria-hidden="true">Bourdareau</span>
           <span class="glitch" data-text="Launay" aria-hidden="true">Launay</span>
         </h1>
         <p class="role"><span class="prompt-c">$</span> <span id="typed">Étudiant B2 Informatique · orienté cybersécurité</span><span class="blink">█</span></p>
-        <p class="lead">Je construis des applications et des réseaux en partant de la question&nbsp;: <strong>qui a le droit de faire quoi&nbsp;?</strong> Pare-feu en liste blanche, moindre privilège en base, authentification vérifiée côté serveur.</p>
+        <p class="lead" data-i18n="lead">Je construis des applications et des réseaux en partant de la question&nbsp;: <strong>qui a le droit de faire quoi&nbsp;?</strong> Pare-feu en liste blanche, moindre privilège en base, authentification vérifiée côté serveur.</p>
         <div class="cta">
-          <a class="btn primary" href="#projets">Ouvrir les dossiers</a>
+          <a class="btn primary" href="#projets" data-i18n="cta.files">Ouvrir les dossiers</a>
           <a class="btn" href="https://github.com/PaulEnBon" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
         <dl class="stats">
-          <div><dt>repos publics</dt><dd>26</dd></div>
-          <div><dt>langages</dt><dd>7</dd></div>
-          <div><dt>apps en ligne</dt><dd>3</dd></div>
+          <div><dt data-i18n="stat.repos">repos publics</dt><dd>26</dd></div>
+          <div><dt data-i18n="stat.langs">langages</dt><dd>7</dd></div>
+          <div><dt data-i18n="stat.apps">apps en ligne</dt><dd>3</dd></div>
         </dl>
       </div>
 
       <div class="term" id="terminal">
-        <div class="term-bar"><i></i><i></i><i></i><span>visiteur@pbl: ~</span></div>
+        <div class="term-bar"><i></i><i></i><i></i><span data-i18n="termbar">visiteur@pbl: ~</span></div>
         <div class="term-body">
           <div id="term-out" role="log" aria-live="polite">
-            <p>Shell interactif. Tapez <b>help</b> puis Entrée.</p>
+            <p data-i18n="term.intro">Shell interactif. Tapez <b>help</b> puis Entrée.</p>
           </div>
           <form id="term-form">
-            <label for="term-in" class="prompt-c">visiteur@pbl:~$</label>
-            <input id="term-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="60" aria-label="Commande du terminal">
+            <label for="term-in" class="prompt-c" data-i18n="prompt">visiteur@pbl:~$</label>
+            <input id="term-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="60" aria-label="Commande du terminal" data-i18n-aria="aria.term">
           </form>
         </div>
       </div>
@@ -74,11 +85,11 @@
       <h2><span class="idx">01</span><span class="scramble">whoami</span></h2>
       <div class="two">
         <div class="reveal">
-          <p>Étudiant en <strong>Bachelor 2 Informatique à Ynov Campus Paris Ouest</strong>, après un bac STI2D ITEC. Je code en Go, Python et TypeScript, et je m'oriente vers la <strong>cybersécurité</strong>.</p>
-          <p>Ce qui m'intéresse&nbsp;: comprendre comment un système tombe pour mieux le fermer. Écrire un pare-feu à partir d'une matrice des flux, retirer à un compte SQL tout ce dont il n'a pas besoin, refuser un jeton dont la signature n'a pas été vérifiée.</p>
-          <p>En dehors du terminal&nbsp;: conception 3D, photo, sport, jeux vidéo.</p>
+          <p data-i18n="about.1">Étudiant en <strong>Bachelor 2 Informatique à Ynov Campus Paris Ouest</strong>, après un bac STI2D ITEC. Je code en Go, Python et TypeScript, et je m'oriente vers la <strong>cybersécurité</strong>.</p>
+          <p data-i18n="about.2">Ce qui m'intéresse&nbsp;: comprendre comment un système tombe pour mieux le fermer. Écrire un pare-feu à partir d'une matrice des flux, retirer à un compte SQL tout ce dont il n'a pas besoin, refuser un jeton dont la signature n'a pas été vérifiée.</p>
+          <p data-i18n="about.3">En dehors du terminal&nbsp;: conception 3D, photo, sport, jeux vidéo.</p>
         </div>
-        <pre class="idcard reveal" aria-label="Fiche d'identité"><code><span class="k">nom</span>        Paul Bourdareau Launay
+        <pre class="idcard reveal" aria-label="Fiche d'identité" data-i18n-aria="aria.id"><code data-i18n="idcard"><span class="k">nom</span>        Paul Bourdareau Launay
 <span class="k">rôle</span>       étudiant B2 informatique
 <span class="k">école</span>      Ynov Campus Paris Ouest
 <span class="k">cap</span>        cybersécurité
@@ -89,92 +100,92 @@
     </section>
 
     <section id="defense" class="wrap sec">
-      <h2><span class="idx">02</span><span class="scramble">défense en profondeur</span></h2>
-      <p class="sub">Chaque couche, une mesure que j'ai réellement mise en place, et le projet qui le prouve.</p>
+      <h2><span class="idx">02</span><span class="scramble" data-i18n="h.defense">défense en profondeur</span></h2>
+      <p class="sub" data-i18n="defense.sub">Chaque couche, une mesure que j'ai réellement mise en place, et le projet qui le prouve.</p>
       <ol class="layers">
-        <li class="reveal"><span class="lv">L1</span><h3>Réseau</h3><p>Pare-feu nftables en liste blanche (<code>policy drop</code>), zones WAN / LAN / DMZ, suivi d'état, DNAT, journalisation des rejets.</p><span class="proof">Calypso</span></li>
-        <li class="reveal"><span class="lv">L2</span><h3>Système</h3><p>SSH par clé uniquement, mots de passe désactivés, connexion root interdite.</p><span class="proof">Calypso</span></li>
-        <li class="reveal"><span class="lv">L3</span><h3>Authentification</h3><p>Mots de passe en bcrypt, comparaison à temps constant, JWT signés et expirants, jetons OAuth vérifiés par signature Ed25519 (JWKS).</p><span class="proof">Crypto Arena · api-jeux</span></li>
-        <li class="reveal"><span class="lv">L4</span><h3>Entrées</h3><p>Validation côté serveur (Pydantic, Zod), requêtes paramétrées, aucune valeur sensible acceptée du client.</p><span class="proof">Crypto Arena · Traque</span></li>
-        <li class="reveal"><span class="lv">L5</span><h3>Données</h3><p>Row Level Security, rôles métiers <code>NOLOGIN</code>, <code>GRANT</code> à la colonne près, vues par profil&nbsp;: le moindre privilège.</p><span class="proof">Traque · Bibliothèque mangas</span></li>
-        <li class="reveal"><span class="lv">L6</span><h3>Secrets &amp; configuration</h3><p>Secrets hors dépôt, CORS restreint aux origines connues, CSP stricte et en-têtes de sécurité.</p><span class="proof">Crypto Arena · ce site</span></li>
+        <li class="reveal"><span class="lv">L1</span><h3 data-i18n="l1.t">Réseau</h3><p data-i18n="l1.p">Pare-feu nftables en liste blanche (<code>policy drop</code>), zones WAN / LAN / DMZ, suivi d'état, DNAT, journalisation des rejets.</p><span class="proof">Calypso</span></li>
+        <li class="reveal"><span class="lv">L2</span><h3 data-i18n="l2.t">Système</h3><p data-i18n="l2.p">SSH par clé uniquement, mots de passe désactivés, connexion root interdite.</p><span class="proof">Calypso</span></li>
+        <li class="reveal"><span class="lv">L3</span><h3 data-i18n="l3.t">Authentification</h3><p data-i18n="l3.p">Mots de passe en bcrypt, comparaison à temps constant, JWT signés et expirants, jetons OAuth vérifiés par signature Ed25519 (JWKS).</p><span class="proof">Crypto Arena · api-jeux</span></li>
+        <li class="reveal"><span class="lv">L4</span><h3 data-i18n="l4.t">Entrées</h3><p data-i18n="l4.p">Validation côté serveur (Pydantic, Zod), requêtes paramétrées, aucune valeur sensible acceptée du client.</p><span class="proof">Crypto Arena · Traque</span></li>
+        <li class="reveal"><span class="lv">L5</span><h3 data-i18n="l5.t">Données</h3><p data-i18n="l5.p">Row Level Security, rôles métiers <code>NOLOGIN</code>, <code>GRANT</code> à la colonne près, vues par profil&nbsp;: le moindre privilège.</p><span class="proof" data-i18n="proof.5">Traque · Bibliothèque mangas</span></li>
+        <li class="reveal"><span class="lv">L6</span><h3 data-i18n="l6.t">Secrets &amp; configuration</h3><p data-i18n="l6.p">Secrets hors dépôt, CORS restreint aux origines connues, CSP stricte et en-têtes de sécurité.</p><span class="proof" data-i18n="proof.6">Crypto Arena · ce site</span></li>
       </ol>
     </section>
 
     <section id="projets" class="wrap sec">
-      <h2><span class="idx">03</span><span class="scramble">dossiers sécurité</span></h2>
-      <p class="sub">Cinq projets où la sécurité est dans le code, pas dans la description.</p>
+      <h2><span class="idx">03</span><span class="scramble" data-i18n="h.files">dossiers sécurité</span></h2>
+      <p class="sub" data-i18n="files.sub">Cinq projets où la sécurité est dans le code, pas dans la description.</p>
       <div class="cards">
 
         <article class="card reveal">
-          <header><span class="ref">DOSSIER 01</span><span class="chip net">RÉSEAU</span><span class="chip sec">DURCISSEMENT</span></header>
-          <h3>Calypso — lab réseau durci</h3>
-          <p>Passerelle Linux à trois zones (WAN, LAN, DMZ) protégeant un serveur interne et un intranet web. TP Réseaux B2.</p>
+          <header><span class="ref"><span data-i18n="file">DOSSIER</span> 01</span><span class="chip net" data-i18n="chip.net">RÉSEAU</span><span class="chip sec" data-i18n="chip.hard">DURCISSEMENT</span></header>
+          <h3 data-i18n="c1.t">Calypso — lab réseau durci</h3>
+          <p data-i18n="c1.p">Passerelle Linux à trois zones (WAN, LAN, DMZ) protégeant un serveur interne et un intranet web. TP Réseaux B2.</p>
           <ul class="mes">
-            <li>nftables en liste blanche&nbsp;: <code>policy drop</code> sur <code>input</code> et <code>forward</code></li>
-            <li>Règles dérivées d'une matrice des flux, une ligne = une règle</li>
-            <li>Suivi d'état conntrack, paquets invalides rejetés, ping limité à 5/s</li>
-            <li>DNAT pour publier le web en DMZ, masquerade en sortie</li>
-            <li>SSH&nbsp;: clé uniquement, root interdit</li>
+            <li data-i18n="c1.1">nftables en liste blanche&nbsp;: <code>policy drop</code> sur <code>input</code> et <code>forward</code></li>
+            <li data-i18n="c1.2">Règles dérivées d'une matrice des flux, une ligne = une règle</li>
+            <li data-i18n="c1.3">Suivi d'état conntrack, paquets invalides rejetés, ping limité à 5/s</li>
+            <li data-i18n="c1.4">DNAT pour publier le web en DMZ, masquerade en sortie</li>
+            <li data-i18n="c1.5">SSH&nbsp;: clé uniquement, root interdit</li>
           </ul>
-          <footer><span class="tags">nftables · OpenSSH · NAT · Linux</span><span class="lnk off">lab local</span></footer>
+          <footer><span class="tags">nftables · OpenSSH · NAT · Linux</span><span class="lnk off" data-i18n="lab">lab local</span></footer>
         </article>
 
         <article class="card reveal">
-          <header><span class="ref">DOSSIER 02</span><span class="chip app">APPSEC</span><span class="chip sec">AUTH</span></header>
+          <header><span class="ref"><span data-i18n="file">DOSSIER</span> 02</span><span class="chip app">APPSEC</span><span class="chip sec">AUTH</span></header>
           <h3>Crypto Arena</h3>
-          <p>Simulateur de trading crypto à argent virtuel, prix réels, classement entre joueurs. React, FastAPI, PostgreSQL.</p>
+          <p data-i18n="c2.p">Simulateur de trading crypto à argent virtuel, prix réels, classement entre joueurs. React, FastAPI, PostgreSQL.</p>
           <ul class="mes">
-            <li>bcrypt, comparaison à temps constant, aucun indice sur l'existence d'un e-mail</li>
-            <li>JWT HS256 expirant, vérifié sur chaque route privée</li>
-            <li>Connexion Google / GitHub&nbsp;: signature Ed25519 vérifiée via JWKS, émetteur, audience, expiration</li>
-            <li>Le prix n'est jamais accepté du client&nbsp;; transactions avec verrous ligne</li>
-            <li>CORS restreint, requêtes paramétrées, secrets hors dépôt</li>
+            <li data-i18n="c2.1">bcrypt, comparaison à temps constant, aucun indice sur l'existence d'un e-mail</li>
+            <li data-i18n="c2.2">JWT HS256 expirant, vérifié sur chaque route privée</li>
+            <li data-i18n="c2.3">Connexion Google / GitHub&nbsp;: signature Ed25519 vérifiée via JWKS, émetteur, audience, expiration</li>
+            <li data-i18n="c2.4">Le prix n'est jamais accepté du client&nbsp;; transactions avec verrous ligne</li>
+            <li data-i18n="c2.5">CORS restreint, requêtes paramétrées, secrets hors dépôt</li>
           </ul>
           <footer><span class="tags">FastAPI · PyJWT · bcrypt · React · Docker</span>
-            <span class="lnk"><a href="https://github.com/PaulEnBon/Crypto-Arena" target="_blank" rel="noopener noreferrer">code ↗</a><a href="https://crypto-arena-three.vercel.app" target="_blank" rel="noopener noreferrer">démo ↗</a></span></footer>
+            <span class="lnk"><a href="https://github.com/PaulEnBon/Crypto-Arena" target="_blank" rel="noopener noreferrer">code ↗</a><a href="https://crypto-arena-three.vercel.app" target="_blank" rel="noopener noreferrer" data-i18n="demo">démo ↗</a></span></footer>
         </article>
 
         <article class="card reveal">
-          <header><span class="ref">DOSSIER 03</span><span class="chip app">APPSEC</span><span class="chip data">DONNÉES</span></header>
-          <h3>Traque — manhunt géolocalisé</h3>
-          <p>Jeu de poursuite entre amis avec positions en temps réel sur carte. Next.js 15, Supabase, MapLibre.</p>
+          <header><span class="ref"><span data-i18n="file">DOSSIER</span> 03</span><span class="chip app">APPSEC</span><span class="chip data" data-i18n="chip.data">DONNÉES</span></header>
+          <h3 data-i18n="c3.t">Traque — manhunt géolocalisé</h3>
+          <p data-i18n="c3.p">Jeu de poursuite entre amis avec positions en temps réel sur carte. Next.js 15, Supabase, MapLibre.</p>
           <ul class="mes">
-            <li>Row Level Security Postgres&nbsp;: le navigateur n'a que la clé <code>anon</code></li>
-            <li>Vue filtrée par rôle&nbsp;: un chasseur ne lit pas ce qu'un chassé voit</li>
-            <li>Toutes les entrées validées côté serveur avec Zod</li>
-            <li>RLS testée en SQL avec 6 comptes simulés, dont un extérieur à la partie</li>
-            <li>14 scénarios multi-comptes automatisés</li>
+            <li data-i18n="c3.1">Row Level Security Postgres&nbsp;: le navigateur n'a que la clé <code>anon</code></li>
+            <li data-i18n="c3.2">Vue filtrée par rôle&nbsp;: un chasseur ne lit pas ce qu'un chassé voit</li>
+            <li data-i18n="c3.3">Toutes les entrées validées côté serveur avec Zod</li>
+            <li data-i18n="c3.4">RLS testée en SQL avec 6 comptes simulés, dont un extérieur à la partie</li>
+            <li data-i18n="c3.5">14 scénarios multi-comptes automatisés</li>
           </ul>
           <footer><span class="tags">Next.js · Supabase · RLS · Zod · Vitest</span>
-            <span class="lnk"><a href="https://manhint.vercel.app" target="_blank" rel="noopener noreferrer">démo ↗</a></span></footer>
+            <span class="lnk"><a href="https://manhint.vercel.app" target="_blank" rel="noopener noreferrer" data-i18n="demo">démo ↗</a></span></footer>
         </article>
 
         <article class="card reveal">
-          <header><span class="ref">DOSSIER 04</span><span class="chip data">DONNÉES</span><span class="chip sec">MOINDRE PRIVILÈGE</span></header>
-          <h3>Bibliothèque de mangas</h3>
-          <p>Base PostgreSQL de prêt de mangas, 200&nbsp;005 emprunts. Projet SQL avancé B2, en groupe.</p>
+          <header><span class="ref"><span data-i18n="file">DOSSIER</span> 04</span><span class="chip data" data-i18n="chip.data">DONNÉES</span><span class="chip sec" data-i18n="chip.lp">MOINDRE PRIVILÈGE</span></header>
+          <h3 data-i18n="c4.t">Bibliothèque de mangas</h3>
+          <p data-i18n="c4.p">Base PostgreSQL de prêt de mangas, 200&nbsp;005 emprunts. Projet SQL avancé B2, en groupe.</p>
           <ul class="mes">
-            <li>Rôles métiers <code>NOLOGIN</code>, un compte par personne qui en hérite</li>
-            <li><code>UPDATE</code> accordé sur une seule colonne, e-mails des lecteurs illisibles au comptoir</li>
-            <li>Vues par profil&nbsp;: le gérant lit des statistiques, rien d'autre</li>
-            <li>Trigger qui fait respecter la règle métier dans la base elle-même</li>
-            <li>Index sur clé étrangère&nbsp;: requête environ 40 fois plus rapide</li>
+            <li data-i18n="c4.1">Rôles métiers <code>NOLOGIN</code>, un compte par personne qui en hérite</li>
+            <li data-i18n="c4.2"><code>UPDATE</code> accordé sur une seule colonne, e-mails des lecteurs illisibles au comptoir</li>
+            <li data-i18n="c4.3">Vues par profil&nbsp;: le gérant lit des statistiques, rien d'autre</li>
+            <li data-i18n="c4.4">Trigger qui fait respecter la règle métier dans la base elle-même</li>
+            <li data-i18n="c4.5">Index sur clé étrangère&nbsp;: requête environ 40 fois plus rapide</li>
           </ul>
           <footer><span class="tags">PostgreSQL · PL/pgSQL · GRANT · Docker</span>
             <span class="lnk"><a href="https://github.com/PaulEnBon/sql-bibliotheque-mangas" target="_blank" rel="noopener noreferrer">code ↗</a></span></footer>
         </article>
 
         <article class="card reveal">
-          <header><span class="ref">DOSSIER 05</span><span class="chip app">APPSEC</span><span class="chip sec">API</span></header>
+          <header><span class="ref"><span data-i18n="file">DOSSIER</span> 05</span><span class="chip app">APPSEC</span><span class="chip sec">API</span></header>
           <h3>api-jeux</h3>
-          <p>API REST d'un catalogue de jeux. FastAPI, SQLAlchemy, Pydantic, PostgreSQL.</p>
+          <p data-i18n="c5.p">API REST d'un catalogue de jeux. FastAPI, SQLAlchemy, Pydantic, PostgreSQL.</p>
           <ul class="mes">
-            <li>Module <code>securite.py</code>&nbsp;: hachage bcrypt appelé directement, passlib étant incompatible avec Python 3.13</li>
-            <li>Vérification à temps constant, même pour un compte inexistant</li>
-            <li>Jetons JWT signés, clé secrète en variable d'environnement</li>
-            <li>Import CSV qui rejette les lignes invalides</li>
-            <li>Conteneurisé (API + PostgreSQL), <code>ruff</code> et <code>pytest</code></li>
+            <li data-i18n="c5.1">Module <code>securite.py</code>&nbsp;: hachage bcrypt appelé directement, passlib étant incompatible avec Python 3.13</li>
+            <li data-i18n="c5.2">Vérification à temps constant, même pour un compte inexistant</li>
+            <li data-i18n="c5.3">Jetons JWT signés, clé secrète en variable d'environnement</li>
+            <li data-i18n="c5.4">Import CSV qui rejette les lignes invalides</li>
+            <li data-i18n="c5.5">Conteneurisé (API + PostgreSQL), <code>ruff</code> et <code>pytest</code></li>
           </ul>
           <footer><span class="tags">FastAPI · bcrypt · JWT · Docker · pytest</span>
             <span class="lnk"><a href="https://github.com/PaulEnBon/Api-1-10-26" target="_blank" rel="noopener noreferrer">code ↗</a></span></footer>
@@ -182,44 +193,44 @@
 
       </div>
 
-      <h2 class="h-sm"><span class="idx">04</span><span class="scramble">autres builds</span></h2>
+      <h2 class="h-sm"><span class="idx">04</span><span class="scramble" data-i18n="h.builds">autres builds</span></h2>
       <ul class="builds">
-        <li class="reveal"><a href="https://github.com/PaulEnBon/groupie-trackerg18" target="_blank" rel="noopener noreferrer"><b>Groupie Tracker</b><span>Application de bureau&nbsp;: recherche, filtres et géolocalisation de concerts depuis une API.</span><em>Go · Fyne</em></a></li>
-        <li class="reveal"><a href="https://github.com/PaulEnBon/game_jam" target="_blank" rel="noopener noreferrer"><b>Betrayal Box</b><span>FPS de survie à double rendu, raycaster 2D et voxels 3D, écrit pour une game jam.</span><em>JavaScript</em></a></li>
-        <li class="reveal"><a href="https://github.com/PaulEnBon/ESPERSOUL2" target="_blank" rel="noopener noreferrer"><b>Esper Soul 2</b><span>RPG textuel jouable dans le terminal&nbsp;: exploration, combat, artisanat.</span><em>Go</em></a></li>
-        <li class="reveal"><a href="https://betmcdo.vercel.app" target="_blank" rel="noopener noreferrer"><b>NuggetBet</b><span>Paris privés entre amis en monnaie virtuelle, pensé pour le mobile.</span><em>Next.js · TypeScript</em></a></li>
-        <li class="reveal"><a href="https://github.com/PaulEnBon/CessBot" target="_blank" rel="noopener noreferrer"><b>SuccessBot</b><span>Assistant IA visuel en temps réel, avec interface et installeur Windows.</span><em>Python</em></a></li>
-        <li class="reveal"><a href="https://github.com/PaulEnBon/puissance2x2" target="_blank" rel="noopener noreferrer"><b>Puissance 2x2</b><span>Jeu de réflexion et variante Puissance 4.</span><em>Go</em></a></li>
-        <li class="reveal"><a href="https://github.com/PaulEnBon/jeux2dame" target="_blank" rel="noopener noreferrer"><b>Jeu de dames</b><span>Jeu de dames en programmation orientée objet.</span><em>Java</em></a></li>
-        <li class="reveal"><a href="https://github.com/PaulEnBon/Yboost" target="_blank" rel="noopener noreferrer"><b>Yboost</b><span>API REST de Pokémons.</span><em>Node.js · Express</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/groupie-trackerg18" target="_blank" rel="noopener noreferrer"><b>Groupie Tracker</b><span data-i18n="b1">Application de bureau&nbsp;: recherche, filtres et géolocalisation de concerts depuis une API.</span><em>Go · Fyne</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/game_jam" target="_blank" rel="noopener noreferrer"><b>Betrayal Box</b><span data-i18n="b2">FPS de survie à double rendu, raycaster 2D et voxels 3D, écrit pour une game jam.</span><em>JavaScript</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/ESPERSOUL2" target="_blank" rel="noopener noreferrer"><b>Esper Soul 2</b><span data-i18n="b3">RPG textuel jouable dans le terminal&nbsp;: exploration, combat, artisanat.</span><em>Go</em></a></li>
+        <li class="reveal"><a href="https://betmcdo.vercel.app" target="_blank" rel="noopener noreferrer"><b>NuggetBet</b><span data-i18n="b4">Paris privés entre amis en monnaie virtuelle, pensé pour le mobile.</span><em>Next.js · TypeScript</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/CessBot" target="_blank" rel="noopener noreferrer"><b>SuccessBot</b><span data-i18n="b5">Assistant IA visuel en temps réel, avec interface et installeur Windows.</span><em>Python</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/puissance2x2" target="_blank" rel="noopener noreferrer"><b>Puissance 2x2</b><span data-i18n="b6">Jeu de réflexion et variante Puissance 4.</span><em>Go</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/jeux2dame" target="_blank" rel="noopener noreferrer"><b data-i18n="b7.t">Jeu de dames</b><span data-i18n="b7">Jeu de dames en programmation orientée objet.</span><em>Java</em></a></li>
+        <li class="reveal"><a href="https://github.com/PaulEnBon/Yboost" target="_blank" rel="noopener noreferrer"><b>Yboost</b><span data-i18n="b8">API REST de Pokémons.</span><em>Node.js · Express</em></a></li>
       </ul>
     </section>
 
-    <section id="arsenal" class="wrap sec">
-      <h2><span class="idx">05</span><span class="scramble">arsenal</span></h2>
-      <div class="arsenal">
-        <div class="reveal"><h3>Réseau &amp; système</h3><ul><li>nftables</li><li>OpenSSH</li><li>NAT / DMZ</li><li>Matrice des flux</li><li>Linux</li><li>Docker</li></ul></div>
-        <div class="reveal"><h3>Sécurité applicative</h3><ul><li>JWT</li><li>bcrypt</li><li>OAuth / JWKS</li><li>CORS</li><li>CSP</li><li>Validation serveur</li></ul></div>
-        <div class="reveal"><h3>Données</h3><ul><li>PostgreSQL</li><li>Row Level Security</li><li>Rôles &amp; GRANT</li><li>Triggers</li><li>Index</li><li>Supabase</li></ul></div>
-        <div class="reveal"><h3>Développement</h3><ul><li>Python / FastAPI</li><li>Go</li><li>TypeScript / Next.js</li><li>React</li><li>Java</li><li>PHP</li></ul></div>
-        <div class="reveal"><h3>Qualité</h3><ul><li>Git / GitHub</li><li>pytest</li><li>Vitest</li><li>ruff</li><li>Tests multi-comptes</li></ul></div>
+    <section id="competences" class="wrap sec">
+      <h2><span class="idx">05</span><span class="scramble" data-i18n="h.skills">compétences</span></h2>
+      <div class="skills">
+        <div class="reveal"><h3 data-i18n="sk1">Réseau &amp; système</h3><ul><li>nftables</li><li>OpenSSH</li><li>NAT / DMZ</li><li data-i18n="ski.flows">Matrice des flux</li><li>Linux</li><li>Docker</li></ul></div>
+        <div class="reveal"><h3 data-i18n="sk2">Sécurité applicative</h3><ul><li>JWT</li><li>bcrypt</li><li>OAuth / JWKS</li><li>CORS</li><li>CSP</li><li data-i18n="ski.valid">Validation serveur</li></ul></div>
+        <div class="reveal"><h3 data-i18n="sk3">Données</h3><ul><li>PostgreSQL</li><li>Row Level Security</li><li data-i18n="ski.roles">Rôles &amp; GRANT</li><li>Triggers</li><li data-i18n="ski.index">Index</li><li>Supabase</li></ul></div>
+        <div class="reveal"><h3 data-i18n="sk4">Développement</h3><ul><li>Python / FastAPI</li><li>Go</li><li>TypeScript / Next.js</li><li>React</li><li>Java</li><li>PHP</li></ul></div>
+        <div class="reveal"><h3 data-i18n="sk5">Qualité</h3><ul><li>Git / GitHub</li><li>pytest</li><li>Vitest</li><li>ruff</li><li data-i18n="ski.tests">Tests multi-comptes</li></ul></div>
       </div>
     </section>
 
     <section id="parcours" class="wrap sec">
-      <h2><span class="idx">06</span><span class="scramble">parcours</span></h2>
+      <h2><span class="idx">06</span><span class="scramble" data-i18n="h.path">parcours</span></h2>
       <ol class="time">
-        <li class="reveal"><time>2026 — 2027</time><h3>Bachelor 2 Informatique</h3><p>Ynov Campus Paris Ouest. Réseaux, SQL avancé, backend Python, sécurité.</p></li>
-        <li class="reveal"><time>2025 — 2026</time><h3>Bachelor 1 Informatique</h3><p>Ynov. Go, Java, Git, premiers projets en équipe.</p></li>
-        <li class="reveal"><time>2022 — 2025</time><h3>Baccalauréat STI2D, spécialité ITEC</h3><p>Ingénierie, prototypage, conception 3D. Projet d'oral&nbsp;: support de niveau laser 360°.</p></li>
+        <li class="reveal"><time>2026 — 2027</time><h3 data-i18n="t1.t">Bachelor 2 Informatique</h3><p data-i18n="t1.p">Ynov Campus Paris Ouest. Réseaux, SQL avancé, backend Python, sécurité.</p></li>
+        <li class="reveal"><time>2025 — 2026</time><h3 data-i18n="t2.t">Bachelor 1 Informatique</h3><p data-i18n="t2.p">Ynov. Go, Java, Git, premiers projets en équipe.</p></li>
+        <li class="reveal"><time>2022 — 2025</time><h3 data-i18n="t3.t">Baccalauréat STI2D, spécialité ITEC</h3><p data-i18n="t3.p">Ingénierie, prototypage, conception 3D. Projet d'oral&nbsp;: support de niveau laser 360°.</p></li>
       </ol>
     </section>
 
     <section id="contact" class="wrap sec">
-      <h2><span class="idx">07</span><span class="scramble">contact</span></h2>
+      <h2><span class="idx">07</span><span class="scramble" data-i18n="h.contact">contact</span></h2>
       <div class="contact reveal">
         <p class="cmd"><span class="prompt-c">$</span> mail contact@paulbl.com</p>
-        <p>Un stage, une alternance, un projet&nbsp;? Écrivez-moi.</p>
+        <p data-i18n="contact.p">Un stage, une alternance, un projet&nbsp;? Écrivez-moi.</p>
         <div class="cta">
           <a class="btn primary" href="mailto:contact@paulbl.com">contact@paulbl.com</a>
           <a class="btn" href="https://www.linkedin.com/in/paul-bourdareau-launay-335a013a3/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
@@ -231,7 +242,7 @@
 
   <footer class="foot wrap">
     <p>© 2026 Paul Bourdareau Launay</p>
-    <p>Servi par Node sans dépendance · CSP stricte · aucun traceur</p>
+    <p data-i18n="foot">Servi par Node sans dépendance · CSP stricte · aucun traceur</p>
   </footer>
 </body>
 </html>

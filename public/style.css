@@ -62,6 +62,10 @@ p { margin: 0 0 1em; }
 .nav nav a::before { content: "./"; color: var(--g); opacity: .6; }
 .nav nav a:hover { color: var(--g); text-decoration: none; }
 .hud { font-size: 12px; color: var(--dim); letter-spacing: .1em; white-space: nowrap; }
+/* choix de la langue : sans script il ne ferait rien, donc il n'apparaît qu'avec */
+.lang { display: none; background: var(--panel); color: var(--txt); border: 1px solid var(--line); border-radius: 0; font: inherit; font-size: 12px; padding: 6px 8px; cursor: pointer; color-scheme: dark; }
+.js .lang { display: block; }
+.lang:hover { border-color: var(--g); color: var(--g); }
 .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--g); margin-right: 8px; box-shadow: 0 0 8px var(--g); }
 
 /* hero */
@@ -159,13 +163,13 @@ h3 { color: #fff; margin: 0 0 8px; font-size: 1.05rem; }
 .builds span { color: var(--dim); font-size: 14px; }
 .builds em { font-style: normal; font-size: 12px; color: var(--c); white-space: nowrap; }
 
-/* arsenal */
-.arsenal { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; margin-top: 26px; }
-.arsenal > div { border: 1px solid var(--line); background: var(--panel); padding: 18px; }
-.arsenal h3 { font-size: 12px; color: var(--g); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 14px; }
-.arsenal ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
-.arsenal li { font-size: 12.5px; padding: 3px 9px; border: 1px solid var(--line); transition: .2s; }
-.arsenal li:hover { border-color: var(--g); color: var(--g); box-shadow: 0 0 10px rgba(61, 255, 162, .2); }
+/* compétences */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; margin-top: 26px; }
+.skills > div { border: 1px solid var(--line); background: var(--panel); padding: 18px; }
+.skills h3 { font-size: 12px; color: var(--g); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 14px; }
+.skills ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.skills li { font-size: 12.5px; padding: 3px 9px; border: 1px solid var(--line); transition: .2s; }
+.skills li:hover { border-color: var(--g); color: var(--g); box-shadow: 0 0 10px rgba(61, 255, 162, .2); }
 
 /* parcours */
 .time { list-style: none; margin: 26px 0 0 6px; padding: 0; border-left: 1px solid var(--line); }
@@ -208,6 +212,7 @@ h3 { color: #fff; margin: 0 0 8px; font-size: 1.05rem; }
   .hero, .two, .cards { grid-template-columns: 1fr; }
   .hero { gap: 32px; }
   .hud { display: none; }
+  .nav-in { gap: 14px; } /* le sélecteur de langue prend de la place : on en rend aux liens */
   .layers li { grid-template-columns: 40px 1fr; gap: 6px 12px; }
   .layers p, .layers .proof { grid-column: 2; justify-self: start; }
   .builds a { grid-template-columns: 1fr; gap: 2px; }

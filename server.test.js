@@ -34,6 +34,22 @@ test('ne sort jamais de public/', async () => {
   }
 });
 
+test('chaque langue du sélecteur traduit toutes les clés', async () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync('public/index.html', 'utf8');
+  const read = (code) => JSON.parse(fs.readFileSync(`public/lang/${code}.json`, 'utf8'));
+  // clés posées dans le HTML + chaînes que script.js lit directement
+  const keys = [...html.matchAll(/data-i18n(?:-aria)?="([^"]+)"/g)].map((m) => m[1])
+    .concat('title', 'desc', 'boot', 'roles', 'help', 'who', 'ls', 'sudo', 'nf');
+  const codes = [...html.matchAll(/<option value="([^"]+)"/g)].map((m) => m[1]).filter((c) => c !== 'fr');
+  assert.ok(codes.length >= 4);
+  for (const code of codes) {
+    const dict = code === 'en-GB' ? { ...read('en-US'), ...read(code) } : read(code);
+    for (const k of keys) assert.ok(dict[k], `${code} : clé « ${k} » manquante`);
+    assert.match((await get(`/lang/${code}.json`)).headers['content-type'], /application\/json/);
+  }
+});
+
 test('refuse les méthodes autres que GET et HEAD', async () => {
   assert.equal((await get('/', 'POST')).status, 405);
   const head = await get('/', 'HEAD');
